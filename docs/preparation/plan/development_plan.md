@@ -34,12 +34,14 @@ Okay, here is a possible vertically-sliced development plan for MuseVision, assu
     - [ ] A hardcoded/sample MusicXML file's data is loaded on the frontend.
     - [ ] The traditional notation section of the UI renders the score using VexFlow.
     - [ ] Basic rendering shows notes and measures correctly.
+    - [ ] ESLint and Prettier set up for code quality enforcement.
 *   **Daily Tasks:**
-    - [ ] Day 1: Research VexFlow basics and integration with React. Install VexFlow.
-    - [ ] Day 2: Create a component dedicated to rendering traditional notation (`TraditionalView.tsx`).
+    - [ ] Day 1: Research VexFlow basics and integration with React. Install VexFlow. Configure ESLint and Prettier for code quality.
+    - [ ] Day 2: Create a component dedicated to rendering traditional notation (`TraditionalView.tsx`). Set up convenience scripts in package.json.
     - [ ] Day 3: Find/create a simple MusicXML sample file. Write basic frontend logic to fetch/load its content (initially can be just importing the file).
     - [ ] Day 4: Implement basic VexFlow rendering logic within `TraditionalView.tsx` to draw notes from the loaded data.
     - [ ] Day 5: Refine VexFlow rendering for measures and basic clefs/time signatures based on the sample.
+    - [ ] Day 6: *Buffer day* for resolving configuration challenges with VexFlow based on Week 1 lessons.
 
 **Week 3: Basic Piano Roll Display**
 
@@ -48,12 +50,14 @@ Okay, here is a possible vertically-sliced development plan for MuseVision, assu
     - [ ] The piano roll section of the UI renders a representation of the score.
     - [ ] Notes are displayed as rectangles, positioned according to pitch (vertically) and time (horizontally/vertically as per design - let's assume vertically scrolling time for now).
     - [ ] The rendering is based on the same loaded MusicXML data.
+    - [ ] Basic error handling for failed rendering is implemented.
 *   **Daily Tasks:**
     - [ ] Day 1: Design the data structure needed to represent notes for the piano roll (pitch, start time, duration).
-    - [ ] Day 2: Create a `PianoRollView.tsx` component using HTML Canvas.
+    - [ ] Day 2: Create a `PianoRollView.tsx` component using HTML Canvas. Add basic error boundaries for this component.
     - [ ] Day 3: Write logic to parse the loaded MusicXML data into the piano roll data structure.
     - [ ] Day 4: Implement basic Canvas drawing logic to render note rectangles based on the data structure.
     - [ ] Day 5: Add basic axes/lines to the canvas for pitch and time orientation.
+    - [ ] Day 6: *Buffer day* for resolving canvas-related issues based on Week 1 lessons about configuration challenges.
 
 **Week 4: Basic Playback Engine & Synchronization (Traditional View)**
 
@@ -63,12 +67,14 @@ Okay, here is a possible vertically-sliced development plan for MuseVision, assu
     - [ ] Clicking Play starts audio playback of the score using Tone.js.
     - [ ] The currently playing note is visually highlighted (e.g., changes color) in the VexFlow (traditional) view.
     - [ ] Playback is synchronized with the highlighting.
+    - [ ] Basic error handling for audio playback is implemented.
 *   **Daily Tasks:**
-    - [ ] Day 1: Install Tone.js. Set up basic audio context and synth.
+    - [ ] Day 1: Install Tone.js. Set up basic audio context and synth. Pin the specific version to avoid dependency issues.
     - [ ] Day 2: Create basic playback control components (Play/Pause buttons) and state management (e.g., `isPlaying`).
     - [ ] Day 3: Write logic to schedule notes from the MusicXML data using `Tone.Transport`.
     - [ ] Day 4: Implement callback logic with `Tone.Draw` or similar to update the application state with the currently playing note/time.
     - [ ] Day 5: Connect the playback state to the `TraditionalView.tsx` component to highlight the corresponding VexFlow element.
+    - [ ] Day 6: Set up basic unit testing for frontend components as discussed in the Week 1 lessons learned.
 
 **Week 5: Synchronize Piano Roll View**
 
@@ -76,12 +82,14 @@ Okay, here is a possible vertically-sliced development plan for MuseVision, assu
 *   **Acceptance Criteria:**
     - [ ] A visual indicator (e.g., a horizontal line moving down, or highlighting notes as they are played) appears on the piano roll view during playback.
     - [ ] The piano roll indicator is synchronized with the audio and the highlighting in the traditional view.
+    - [ ] API contracts between components are clearly documented.
 *   **Daily Tasks:**
     - [ ] Day 1: Plan the synchronization mechanism for the canvas (e.g., redrawing with a progress line, changing note colors).
     - [ ] Day 2: Connect the playback state/time callback from Tone.js to the `PianoRollView.tsx` component.
     - [ ] Day 3: Implement the drawing logic for the playback indicator on the canvas.
     - [ ] Day 4: Test and refine synchronization between audio, traditional view, and piano roll view.
     - [ ] Day 5: Add basic Stop/Rewind functionality to the playback controls.
+    - [ ] Day 6: Document API contracts between components and implement additional tests based on Week 1 lessons learned.
 
 **Week 6: Basic Controls - Tempo & File Input**
 
@@ -91,12 +99,27 @@ Okay, here is a possible vertically-sliced development plan for MuseVision, assu
     - [ ] The selected file is loaded, parsed, and displayed in both views.
     - [ ] A tempo control (e.g., slider or input field) allows adjusting the playback speed.
     - [ ] Changing the tempo affects the actual playback speed and visual synchronization.
+    - [ ] Robust error handling for invalid file inputs is implemented.
 *   **Daily Tasks:**
-    - [ ] Day 1: Implement a file input component (`<input type="file">`) and handler.
+    - [ ] Day 1: Implement a file input component (`<input type="file">`) and handler with proper error boundaries.
     - [ ] Day 2: Add frontend logic to read the selected MusicXML file content.
-    - [ ] Day 3: Refactor the score loading logic to handle user-provided files instead of hardcoded ones. Add basic error handling for invalid files.
+    - [ ] Day 3: Refactor the score loading logic to handle user-provided files instead of hardcoded ones. Add robust error handling for invalid files.
     - [ ] Day 4: Implement a tempo control UI element and connect its state.
     - [ ] Day 5: Connect the tempo state to `Tone.Transport.bpm` to control playback speed. Test thoroughly.
+
+**Week 6.5: Technical Debt Week**
+
+*   **User Story:** As a developer, I want to address accumulated technical debt and ensure code quality before moving to Phase 2.
+*   **Acceptance Criteria:**
+    - [ ] Code consistency and quality issues identified in Weeks 1-6 are addressed.
+    - [ ] Test coverage for critical components is increased.
+    - [ ] Documentation is updated to reflect current implementation.
+    - [ ] Environment-specific issues are resolved.
+*   **Daily Tasks:**
+    - [ ] Day 1: Conduct code review and identify technical debt issues (based on Week 1 lessons about configuration).
+    - [ ] Day 2-3: Refactor code to address identified issues, focusing on maintaining ES module consistency, proper error handling, and code style.
+    - [ ] Day 4: Enhance tests for critical components.
+    - [ ] Day 5: Update documentation and verify that environment-specific configurations work properly.
 
 ---
 
