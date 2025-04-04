@@ -1,0 +1,43 @@
+# Environment and IDE files
+.env
+.venv
+.vscode/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.idea/
+.DS_Store
+
+# Frontend build files
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.pnpm-debug.log*
+frontend/pnpm-lock.yaml
+frontend/package-lock.json
+frontend/yarn.lock
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# Backend files
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+backend/*.so
+backend/env/
+backend/venv/
+backend/ENV/
+backend/dist/
+backend/build/
+backend/*.egg-info/
+backend/.eggs/ 
