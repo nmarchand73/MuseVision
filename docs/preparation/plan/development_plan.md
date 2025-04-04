@@ -178,4 +178,66 @@ Okay, here is a possible vertically-sliced development plan for MuseVision, assu
 
 ---
 
-This plan provides a structured approach, focusing on delivering value slice by slice. Remember that 1 hour/day is a constrained pace, and complexities (especially AI/OCR for PDF/Image import) will require significant time and potentially exploring different technical approaches. Be prepared to adjust the plan based on challenges encountered. 
+## Plan Adjustments Based on Week 1 Lessons Learned
+
+After completing Week 1 and reflecting on the lessons learned, the following adjustments and considerations will be incorporated into our development plan for Weeks 2 and beyond:
+
+### Technical Considerations
+
+1. **Frontend Configuration Best Practices**
+   - Consistently use ES module syntax throughout the project, aligning with the Vite build system.
+   - Pin specific versions of key dependencies (Tailwind CSS, PostCSS, Autoprefixer) to avoid integration issues.
+   - Regenerate configuration files when experiencing integration challenges.
+
+2. **Backend Configuration Enhancements**
+   - Expand CORS configuration to accommodate all potential development environments:
+     ```python
+     app.add_middleware(
+         CORSMiddleware,
+         allow_origins=[
+             "http://localhost:3000",
+             "http://localhost:5173",  # Vite's default port
+             "http://127.0.0.1:3000",
+             "http://127.0.0.1:5173",
+             # Add other potential development URLs
+         ],
+         allow_credentials=True,
+         allow_methods=["*"],
+         allow_headers=["*"],
+     )
+     ```
+
+3. **Environment-Specific Adjustments**
+   - Use PowerShell-specific command syntax (`;` instead of `&&`) for command chaining.
+   - Prefer absolute paths when navigating directories to avoid confusion in nested structures.
+   - Update deployment and setup scripts to work consistently across environments.
+
+### Process Improvements
+
+1. **Development Workflow Enhancements**
+   - **Week 2 Addition**: Set up ESLint and Prettier for code quality enforcement.
+   - **Week 2-3 Addition**: Create development convenience scripts in package.json for common operations.
+   - Continue using checkboxes in the development plan for clear progress tracking.
+
+2. **Error Handling Strategy**
+   - **Week 3-4 Addition**: Implement error boundaries in React components.
+   - **Week 3-4 Addition**: Add robust exception handling in FastAPI endpoints.
+   - Follow the established error diagnosis procedure (console checking, version verification, etc.).
+
+3. **Testing Framework**
+   - **Week 4-5 Addition**: Set up basic unit testing framework for frontend components.
+   - **Week 4-5 Addition**: Implement API endpoint testing for the backend.
+
+4. **Documentation**
+   - **Continuous Task**: Define clear API contracts between frontend and backend before implementation.
+   - Maintain clear documentation of configuration choices and architectural decisions.
+
+### Prioritized Adjustments to Timeline
+
+Based on Week 1 experiences, the following timeline adjustments may be needed:
+
+1. **Add a buffer day to Week 2** for potential configuration challenges with VexFlow integration.
+2. **Allocate additional time in Week 3** for potential canvas-related issues in the piano roll implementation.
+3. **Consider adding a dedicated "Technical Debt Week"** after Week 6 to address accumulating issues before moving to Phase 2.
+
+These adjustments ensure we apply the lessons learned from Week 1 to make the development process more efficient, reduce time spent on configuration issues, and build a more robust application. 
