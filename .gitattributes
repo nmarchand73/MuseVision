@@ -1,0 +1,42 @@
+# Set default behavior to automatically normalize line endings
+* text=auto
+
+# Explicitly declare text files to be normalized
+*.ts text
+*.tsx text
+*.js text
+*.jsx text
+*.json text
+*.html text
+*.css text
+*.md text
+*.py text
+*.yml text
+*.yaml text
+*.toml text
+*.xml text
+
+# Denote all files that are binary and should not be modified
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.mp3 binary
+*.wav binary
+*.zip binary
+*.pdf binary
+
+# Specific file types for music scores
+*.musicxml text
+*.xml text
+
+# Handle executables appropriately
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary 
