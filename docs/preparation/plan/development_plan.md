@@ -25,7 +25,7 @@ Okay, here is a possible vertically-sliced development plan for MuseVision, assu
     - [x] Day 2: Set up React/TS project (`npx create-react-app frontend --template typescript` or Vite equivalent). Install Tailwind.
     - [x] Day 3: Set up basic FastAPI project structure (`main.py`, `requirements.txt`).
     - [x] Day 4: Create placeholder components for the main app layout (e.g., Header, ScoreViewPane1, ScoreViewPane2, Controls).
-    - [x] Day 5: Basic CSS/Tailwind to establish the split-view layout visually.
+    - [x] Day 5: Basic CSS/Tailwind to establish the split-view layout visually using the color palette (Primary: #3B82F6, Secondary: #10B981, Neutral: #1F2937, Light: #F9FAFB).
 
 **Week 2: Basic MusicXML Loading & Traditional Notation Display**
 
@@ -35,12 +35,13 @@ Okay, here is a possible vertically-sliced development plan for MuseVision, assu
     - [ ] The traditional notation section of the UI renders the score using VexFlow.
     - [ ] Basic rendering shows notes and measures correctly.
     - [ ] ESLint and Prettier set up for code quality enforcement.
+    - [ ] Typography implemented using Inter (primary) and Roboto Mono (for musicological labels) with base 16px.
 *   **Daily Tasks:**
     - [ ] Day 1: Research VexFlow basics and integration with React. Install VexFlow. Configure ESLint and Prettier for code quality.
     - [ ] Day 2: Create a component dedicated to rendering traditional notation (`TraditionalView.tsx`). Set up convenience scripts in package.json.
     - [ ] Day 3: Find/create a simple MusicXML sample file. Write basic frontend logic to fetch/load its content (initially can be just importing the file).
     - [ ] Day 4: Implement basic VexFlow rendering logic within `TraditionalView.tsx` to draw notes from the loaded data.
-    - [ ] Day 5: Refine VexFlow rendering for measures and basic clefs/time signatures based on the sample.
+    - [ ] Day 5: Refine VexFlow rendering for measures and basic clefs/time signatures based on the sample. Add typography implementation (Inter and Roboto Mono fonts).
     - [ ] Day 6: *Buffer day* for resolving configuration challenges with VexFlow based on Week 1 lessons.
 
 **Week 3: Basic Piano Roll Display**
@@ -48,14 +49,15 @@ Okay, here is a possible vertically-sliced development plan for MuseVision, assu
 *   **User Story:** As a user, I want to see a piano roll representation of the loaded MusicXML file alongside the traditional notation so that I can visualize the music structure differently.
 *   **Acceptance Criteria:**
     - [ ] The piano roll section of the UI renders a representation of the score.
-    - [ ] Notes are displayed as rectangles, positioned according to pitch (vertically) and time (horizontally/vertically as per design - let's assume vertically scrolling time for now).
+    - [ ] Notes are displayed as rectangles, positioned according to pitch (vertically) and time (horizontally).
     - [ ] The rendering is based on the same loaded MusicXML data.
     - [ ] Basic error handling for failed rendering is implemented.
+    - [ ] **Vertical time progression** is implemented as specified in the context document.
 *   **Daily Tasks:**
     - [ ] Day 1: Design the data structure needed to represent notes for the piano roll (pitch, start time, duration).
     - [ ] Day 2: Create a `PianoRollView.tsx` component using HTML Canvas. Add basic error boundaries for this component.
     - [ ] Day 3: Write logic to parse the loaded MusicXML data into the piano roll data structure.
-    - [ ] Day 4: Implement basic Canvas drawing logic to render note rectangles based on the data structure.
+    - [ ] Day 4: Implement basic Canvas drawing logic to render note rectangles based on the data structure, ensuring time flows vertically down the canvas.
     - [ ] Day 5: Add basic axes/lines to the canvas for pitch and time orientation.
     - [ ] Day 6: *Buffer day* for resolving canvas-related issues based on Week 1 lessons about configuration challenges.
 
@@ -133,19 +135,21 @@ Okay, here is a possible vertically-sliced development plan for MuseVision, assu
 *   **Acceptance Criteria:**
     - [ ] A static piano keyboard UI is displayed adjacent to the piano roll.
     - [ ] Keys on the keyboard highlight in sync with the notes being played during playback.
+    - [ ] Keyboard visualization follows the UI color scheme defined in the context document.
 *   **Daily Tasks:** (Likely > 1 week)
-    - [ ] Days 1-2: Design and implement the static piano keyboard component (HTML/CSS/SVG).
+    - [ ] Days 1-2: Design and implement the static piano keyboard component (HTML/CSS/SVG) using the project's color palette.
     - [ ] Days 3-5+: Connect playback state to highlight the appropriate keys on the keyboard component.
 
 **Week 8: Note Coloring & Basic Customization**
 
-*   **User Story:** As a user, I want notes to be color-coded (e.g., blue/green as specified) in both views so that I can visually distinguish them easily (e.g., for different hands or voices, initially just alternating).
+*   **User Story:** As a user, I want notes to be color-coded in both views so that I can visually distinguish them easily (e.g., for different hands or voices, initially just alternating).
 *   **Acceptance Criteria:**
-    - [ ] Notes in the traditional view are rendered with alternating specified colors (e.g., #60A5FA, #34D399).
+    - [ ] Notes in the traditional view are rendered with alternating specified colors exactly as defined in the context: #60A5FA (Blue) and #34D399 (Green).
     - [ ] Notes in the piano roll view use the corresponding colors.
+    - [ ] Colors are consistently applied across the application.
 *   **Daily Tasks:**
-    - [ ] Day 1-2: Modify VexFlow rendering logic to apply specified colors.
-    - [ ] Day 3-4: Modify Piano Roll canvas drawing logic to apply specified colors.
+    - [ ] Day 1-2: Modify VexFlow rendering logic to apply specified colors (#60A5FA for blue notes, #34D399 for green notes).
+    - [ ] Day 3-4: Modify Piano Roll canvas drawing logic to apply the same specified colors.
     - [ ] Day 5: Add a simple settings toggle/option (state only for now) to enable/disable coloring.
 
 **Week 9: Section Looping**
@@ -194,46 +198,42 @@ Okay, here is a possible vertically-sliced development plan for MuseVision, assu
         - [ ] Displaying recognized notation
         
         This will likely take *multiple weeks*. Start with just sending the PDF to the backend and maybe logging the results from a test call to an AI service.
-*   **User Authentication:**
-    - [ ] Integrate basic Azure AD B2C or similar for user accounts.
-*   **Refinements:**
-    - [ ] Improve UI, add error handling, enhance visualizations.
 
 ---
 
-## Plan Adjustments Based on Week 1 Lessons Learned
+**Phase 3: Advanced Features (Future Development)**
 
-After completing Week 1 and reflecting on the lessons learned, the following adjustments and considerations will be incorporated into our development plan for Weeks 2 and beyond:
+Based on the context document, these additional features will be prioritized after completing Phase 2:
 
-### Technical Considerations
+1. **Authentication System** (mentioned in context as a requirement)
+   - User accounts with roles (Student/Teacher)
+   - Social login integration (Google, Apple)
+   - Guest user access with limited functionality
+   - Technical implementation: Azure AD B2C as specified in the context
 
-1. **Frontend Configuration Best Practices**
-   - Consistently use ES module syntax throughout the project, aligning with the Vite build system.
-   - Pin specific versions of key dependencies (Tailwind CSS, PostCSS, Autoprefixer) to avoid integration issues.
-   - Regenerate configuration files when experiencing integration challenges.
+2. **Complete Score Management**
+   - Expand PDF and image import capabilities
+   - Implement library organization with tags and search
+   - Azure Blob Storage for scores as specified in the context
 
-2. **Backend Configuration Enhancements**
-   - Expand CORS configuration to accommodate all potential development environments:
-     ```python
-     app.add_middleware(
-         CORSMiddleware,
-         allow_origins=[
-             "http://localhost:3000",
-             "http://localhost:5173",  # Vite's default port
-             "http://127.0.0.1:3000",
-             "http://127.0.0.1:5173",
-             # Add other potential development URLs
-         ],
-         allow_credentials=True,
-         allow_methods=["*"],
-         allow_headers=["*"],
-     )
-     ```
+3. **Advanced Practice Tools**
+   - Score annotation
+   - Practice session recording
+   - Performance feedback (with MIDI keyboard)
+   - Progress tracking
 
-3. **Environment-Specific Adjustments**
-   - Use PowerShell-specific command syntax (`;` instead of `&&`) for command chaining.
-   - Prefer absolute paths when navigating directories to avoid confusion in nested structures.
-   - Update deployment and setup scripts to work consistently across environments.
+4. **Sharing and Collaboration**
+   - Share annotated scores
+   - Teacher-student score sharing
+   - Export practice recordings
+   - WebSocket implementation for collaborative features as specified in the context
+
+The development phases have been organized to align with the user flow described in the context document:
+1. Phase 1 (Weeks 1-6): Core score viewing and playback
+2. Phase 2 (Weeks 7-12+): Enhanced visualization and practice tools
+3. Phase 3: Authentication, score management, collaboration
+
+This ensures that we're building the application in a way that supports the intended user flow while maintaining our vertical slice approach.
 
 ### Process Improvements
 
@@ -255,66 +255,6 @@ After completing Week 1 and reflecting on the lessons learned, the following adj
    - **Continuous Task**: Define clear API contracts between frontend and backend before implementation.
    - Maintain clear documentation of configuration choices and architectural decisions.
 
-### Prioritized Adjustments to Timeline
-
-Based on Week 1 experiences, the following timeline adjustments may be needed:
-
-1. **Add a buffer day to Week 2** for potential configuration challenges with VexFlow integration.
-2. **Allocate additional time in Week 3** for potential canvas-related issues in the piano roll implementation.
-3. **Consider adding a dedicated "Technical Debt Week"** after Week 6 to address accumulating issues before moving to Phase 2.
-
-These adjustments ensure we apply the lessons learned from Week 1 to make the development process more efficient, reduce time spent on configuration issues, and build a more robust application.
-
-## Context-Based Refinements
-
-After reviewing the project context document, the following refinements and clarifications have been added to ensure our development plan aligns with the specified requirements:
-
-### Color Scheme Implementation (Week 8)
-
-The note coloring implementation in Week 8 will specifically use the exact colors specified in the context document:
-- Blue notes: #60A5FA
-- Green notes: #34D399
-
-The UI will follow the broader color palette:
-- Primary: #3B82F6 (Blue for UI elements and accents)
-- Secondary: #10B981 (Green for secondary accents)
-- Neutral: #1F2937 (Dark for text and backgrounds)
-- Light: #F9FAFB (Light background)
-
-### Vertical Time Progression
-
-The piano roll implementation in Week 3 will specifically use vertical time progression as specified in the context document, with notes displayed as rectangles and time flowing vertically down the canvas.
-
-### Typography Implementation
-
-When implementing the UI components, we will use:
-- Primary font: Inter (clean, readable interface)
-- Secondary font: Roboto Mono (for musicological labels)
-- Base font size: 16px with modular scaling
-
-### Additional Feature Prioritization
-
-Based on the context document, these additional features will be prioritized for Phase 3 (post Week 12):
-
-1. **Authentication System** (mentioned in context as a requirement)
-   - User accounts with roles (Student/Teacher)
-   - Social login integration (Google, Apple)
-   - Guest user access with limited functionality
-
-2. **Complete Score Management**
-   - Expand PDF and image import capabilities
-   - Implement library organization with tags and search
-
-3. **Advanced Practice Tools**
-   - Score annotation
-   - Practice session recording
-   - Performance feedback (with MIDI keyboard)
-   - Progress tracking
-
-4. **Sharing and Collaboration**
-   - Share annotated scores
-   - Teacher-student score sharing
-   - Export practice recordings
 
 ### Technical Stack Alignment
 
@@ -328,6 +268,6 @@ The development plan will continue to use the technologies specified in the cont
 The development phases have been organized to align with the user flow described in the context document:
 1. Phase 1 (Weeks 1-6): Core score viewing and playback
 2. Phase 2 (Weeks 7-12+): Enhanced visualization and practice tools
-3. Future Phase 3: Authentication, score management, collaboration
+3. Phase 3: Authentication, score management, collaboration
 
 This ensures that we're building the application in a way that supports the intended user flow while maintaining our vertical slice approach. 
