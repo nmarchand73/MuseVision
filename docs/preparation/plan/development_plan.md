@@ -263,4 +263,71 @@ Based on Week 1 experiences, the following timeline adjustments may be needed:
 2. **Allocate additional time in Week 3** for potential canvas-related issues in the piano roll implementation.
 3. **Consider adding a dedicated "Technical Debt Week"** after Week 6 to address accumulating issues before moving to Phase 2.
 
-These adjustments ensure we apply the lessons learned from Week 1 to make the development process more efficient, reduce time spent on configuration issues, and build a more robust application. 
+These adjustments ensure we apply the lessons learned from Week 1 to make the development process more efficient, reduce time spent on configuration issues, and build a more robust application.
+
+## Context-Based Refinements
+
+After reviewing the project context document, the following refinements and clarifications have been added to ensure our development plan aligns with the specified requirements:
+
+### Color Scheme Implementation (Week 8)
+
+The note coloring implementation in Week 8 will specifically use the exact colors specified in the context document:
+- Blue notes: #60A5FA
+- Green notes: #34D399
+
+The UI will follow the broader color palette:
+- Primary: #3B82F6 (Blue for UI elements and accents)
+- Secondary: #10B981 (Green for secondary accents)
+- Neutral: #1F2937 (Dark for text and backgrounds)
+- Light: #F9FAFB (Light background)
+
+### Vertical Time Progression
+
+The piano roll implementation in Week 3 will specifically use vertical time progression as specified in the context document, with notes displayed as rectangles and time flowing vertically down the canvas.
+
+### Typography Implementation
+
+When implementing the UI components, we will use:
+- Primary font: Inter (clean, readable interface)
+- Secondary font: Roboto Mono (for musicological labels)
+- Base font size: 16px with modular scaling
+
+### Additional Feature Prioritization
+
+Based on the context document, these additional features will be prioritized for Phase 3 (post Week 12):
+
+1. **Authentication System** (mentioned in context as a requirement)
+   - User accounts with roles (Student/Teacher)
+   - Social login integration (Google, Apple)
+   - Guest user access with limited functionality
+
+2. **Complete Score Management**
+   - Expand PDF and image import capabilities
+   - Implement library organization with tags and search
+
+3. **Advanced Practice Tools**
+   - Score annotation
+   - Practice session recording
+   - Performance feedback (with MIDI keyboard)
+   - Progress tracking
+
+4. **Sharing and Collaboration**
+   - Share annotated scores
+   - Teacher-student score sharing
+   - Export practice recordings
+
+### Technical Stack Alignment
+
+The development plan will continue to use the technologies specified in the context:
+- Frontend: React with TypeScript, Tailwind CSS, VexFlow, Canvas, Tone.js
+- Backend: Python FastAPI
+- Database: We'll initially use SQLite locally as specified in Week 10, with a path to Azure Cosmos DB as mentioned in the context
+
+### User Flow Considerations
+
+The development phases have been organized to align with the user flow described in the context document:
+1. Phase 1 (Weeks 1-6): Core score viewing and playback
+2. Phase 2 (Weeks 7-12+): Enhanced visualization and practice tools
+3. Future Phase 3: Authentication, score management, collaboration
+
+This ensures that we're building the application in a way that supports the intended user flow while maintaining our vertical slice approach. 
